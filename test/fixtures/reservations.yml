@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_name: MyString
+  total_amount_cents: 1
+  signal_amount_cents: 1
+  entry_date_time: 2025-08-14 22:12:15
+  out_date_time: 2025-08-14 22:12:15
+
+two:
+  customer_name: MyString
+  total_amount_cents: 1
+  signal_amount_cents: 1
+  entry_date_time: 2025-08-14 22:12:15
+  out_date_time: 2025-08-14 22:12:15
