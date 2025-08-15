@@ -9,9 +9,11 @@ class Reservation < ApplicationRecord
             presence: true,
             numericality: { less_than: :total_amount_cents }
 
-  validates :entry_date_time, presence: true
+  validates :entry_date_time,
+            presence: true,
+            comparison: { less_than: :out_date_time }
 
   validates :out_date_time,
             presence: true,
-            comparison: { less_than: :entry_date_time }
+            comparison: { greater_than: :entry_date_time }
 end
