@@ -29,5 +29,10 @@ RSpec.describe Reservation, type: :model do
       reservation.out_date_time = reservation.entry_date_time.prev_day
       expect(reservation).to_not be_valid
     end
+
+    it 'Creating with entry_date_time greater than out_date_time' do
+      reservation.entry_date_time = reservation.out_date_time.next_day
+      expect(reservation).to_not be_valid
+    end
   end
 end
