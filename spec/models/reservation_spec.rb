@@ -12,7 +12,7 @@ RSpec.describe Reservation, type: :model do
   end
 
   context 'Testing the business logic' do
-    let!(:reservation) do
+    let(:reservation) do
       Reservation.new(customer_name: 'Test', total_amount_cents: 10, signal_amount_cents: 9,
                       entry_date_time: '2025-08-12 10:10:10', out_date_time: '2025-08-20 10:10:10')
     end
