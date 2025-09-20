@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :reservations
       resources :observations
+      resources :payments
     end
   end
 end

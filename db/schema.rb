@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_16_022049) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_20_230839) do
   create_table "observations", force: :cascade do |t|
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "date_time"
+    t.date "date"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "reservations_id", null: false
+    t.integer "total_amount_cents"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservations_id"], name: "index_payments_on_reservations_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -26,6 +35,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_16_022049) do
     t.datetime "out_date_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "observation"
+    t.integer "payment_status"
   end
 
+  add_foreign_key "payments", "reservations", column: "reservations_id"
 end
