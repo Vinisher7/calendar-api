@@ -1,5 +1,6 @@
 class Reservation < ApplicationRecord
   has_many :payments
+  belongs_to :users
 
   validates :customer_name, presence: true, length: { maximum: 50 }
 
