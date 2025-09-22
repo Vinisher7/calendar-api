@@ -27,8 +27,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_21_032426) do
     t.datetime "updated_at", null: false
     t.datetime "date_time"
     t.date "date"
-    t.integer "users_id", null: false
-    t.index ["users_id"], name: "index_observations_on_users_id"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_observations_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -36,9 +36,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_21_032426) do
     t.integer "total_amount_cents"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "users_id", null: false
+    t.integer "user_id", null: false
     t.index ["reservations_id"], name: "index_payments_on_reservations_id"
-    t.index ["users_id"], name: "index_payments_on_users_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -51,8 +51,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_21_032426) do
     t.datetime "updated_at", null: false
     t.string "observation"
     t.integer "payment_status"
-    t.integer "users_id", null: false
-    t.index ["users_id"], name: "index_reservations_on_users_id"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,8 +70,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_21_032426) do
   end
 
   add_foreign_key "notifications", "users", column: "users_id"
-  add_foreign_key "observations", "users", column: "users_id"
+  add_foreign_key "observations", "users"
   add_foreign_key "payments", "reservations", column: "reservations_id"
-  add_foreign_key "payments", "users", column: "users_id"
-  add_foreign_key "reservations", "users", column: "users_id"
+  add_foreign_key "payments", "users"
+  add_foreign_key "reservations", "users"
 end

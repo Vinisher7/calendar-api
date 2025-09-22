@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         resources :reservations
         resources :observations
         resources :payments
-        get 'home', to: 'home#index'
+        get 'health', to: 'health#index'
       end
     end
   end

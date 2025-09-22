@@ -1,6 +1,6 @@
 class Reservation < ApplicationRecord
   has_many :payments
-  belongs_to :users
+  belongs_to :user
 
   validates :customer_name, presence: true, length: { maximum: 50 }
 
@@ -46,6 +46,7 @@ class Reservation < ApplicationRecord
     start_date = entry_date_time.beginning_of_month
     end_date = entry_date_time.end_of_month
     month_reservations = Reservation.where(entry_date_time: start_date..end_date)
+    return if month_reservations.empty?
     month_reservations.each do |date_taken|
       if (entry_date_time.to_date..out_date_time.to_date).overlaps?(date_taken.entry_date_time.to_date..date_taken.out_date_time.to_date)
         errors.add(:entry_date_time, 'This period of time has already been taken!')

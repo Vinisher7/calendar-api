@@ -1,1 +1,0 @@
-json.message 'Reserva feita com sucesso!'

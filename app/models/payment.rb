@@ -1,4 +1,4 @@
 class Payment < ApplicationRecord
-  belongs_to :reservations
-  belongs_to :users
+  belongs_to :reservation
+  belongs_to :user
 end
