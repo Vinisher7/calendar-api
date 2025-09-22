@@ -8,7 +8,14 @@ module Api
       end
 
       def create
-        result = Reservations::CreateReservation.call(reservation: @reservation)
+        result = Organizers::Reservations::PerformCreatingReservation.call(
+          reservation: @reservation,
+          notification_params: {
+            user_id: current_user.id,
+            notification_type: :reservation,
+            description: 'Nova reserva feita!'
+          }
+        )
 
         unless result.success?
           return render json: { error: result.error, cause: result.cause }, status: :bad_request

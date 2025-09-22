@@ -9,6 +9,10 @@ module Reservations
       end
 
       context.response = { message: 'Reserva criada com sucesso!' }
+
+      def rollback
+        context.reservation.destroy
+      end
     end
   end
 end

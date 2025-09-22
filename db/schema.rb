@@ -12,13 +12,13 @@
 
 ActiveRecord::Schema[7.1].define(version: 2025_09_21_032426) do
   create_table "notifications", force: :cascade do |t|
-    t.integer "users_id", null: false
+    t.integer "user_id", null: false
     t.string "description"
-    t.string "type"
+    t.integer "notification_type"
     t.boolean "is_read"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_notifications_on_users_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "observations", force: :cascade do |t|
@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_21_032426) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "notifications", "users", column: "users_id"
+  add_foreign_key "notifications", "users"
   add_foreign_key "observations", "users"
   add_foreign_key "payments", "reservations", column: "reservations_id"
   add_foreign_key "payments", "users"
