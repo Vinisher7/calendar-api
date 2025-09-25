@@ -25,19 +25,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_21_032426) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "date_time"
     t.date "date"
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_observations_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer "reservations_id", null: false
+    t.integer "reservation_id", null: false
     t.integer "total_amount_cents"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.index ["reservations_id"], name: "index_payments_on_reservations_id"
+    t.index ["reservation_id"], name: "index_payments_on_reservation_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
@@ -71,7 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_21_032426) do
 
   add_foreign_key "notifications", "users"
   add_foreign_key "observations", "users"
-  add_foreign_key "payments", "reservations", column: "reservations_id"
+  add_foreign_key "payments", "reservations"
   add_foreign_key "payments", "users"
   add_foreign_key "reservations", "users"
 end

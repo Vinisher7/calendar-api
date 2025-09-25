@@ -3,8 +3,8 @@ module Notifications
     include Interactor
 
     def call
-      binding.irb
-      ActionCable.server.broadcast "NotificationsChannel", { data: context[:notification] }
+      ActionCable.server.broadcast "NotificationsChannel", { notification: context[:notification],
+                                                             data: context[:data] }
     end
   end
 end

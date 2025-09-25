@@ -1,7 +1,11 @@
 module Api
   module V1
     class PaymentsController < ApplicationController
-      before_action :authorize_user!
+      before_action :authenticate_user!
+
+      def create
+
+      end
     end
   end
 end

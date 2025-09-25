@@ -3,9 +3,8 @@ module Api
     class ReservationsController < ApplicationController
       before_action :authenticate_user!
       before_action :set_reservation!, only: :create
-      def index
-        render json: { data: current_user }
-      end
+
+      def index; end
 
       def create
         result = Organizers::Reservations::PerformCreatingReservation.call(
@@ -13,8 +12,9 @@ module Api
           notification_params: {
             user_id: current_user.id,
             notification_type: :reservation,
-            description: 'Nova reserva feita!'
-          }
+            description: 'Nova reserva feita!',
+          },
+          data: @reservation
         )
 
         unless result.success?
